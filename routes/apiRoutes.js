@@ -20,7 +20,8 @@ module.exports = function(app) {
   app.get("/api/notes", function(req, res) {
 
     fs.readFile('./db/db.json', 'utf8', function(err, data) {
-        res.json(data);
+
+        res.json(JSON.parse(data));
     });
   });
 
@@ -41,5 +42,9 @@ module.exports = function(app) {
     });
 
     res.json(req.body);
+  });
+
+  app.delete("/api/notes/:id", function(req, res){
+
   });
 };
